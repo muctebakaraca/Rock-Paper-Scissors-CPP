@@ -1,0 +1,103 @@
+/*
+    The purpose of this program is to provide the user with the utility to enjoy the classic, centuries old game of rock, paper, and scissors.
+    With its state of the art computer decision system, this program is able to provide the user with a truly pseudorandom game while having the 
+    added benefit of running on budget friendly hardware.
+*/
+// Includes any possibly necessary libraries using the standard namespace.
+#include <cstdlib>
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+// The main game loop. Takes as parameters the user and the computers decisions.
+void scorePlay(int user, int comp)
+{
+    // The below if/else if/else block decides what to display depending on the users decision.
+    // If the user chooses Rock, based on what the computer has chosen, makes correct display.
+    if (user == 1)
+    {
+        switch (comp)
+        {
+            case 1:
+                cout << "\nThe game is a tie. Both the player and computer played rock." << endl;
+                break;
+            case 2:
+                cout << "\nPaper covers rock, computer wins!" << endl;
+                break;
+            case 3:
+                cout << "\nRock crushes scissors, player wins!"  << endl;
+                break;
+        }
+    }
+    // Else If the user chooses Paper, based on what the computer has chosen, makes correct display.
+    else if (user == 2)
+    {
+        switch (comp)
+        {
+            case 1:
+                cout << "\nPaper covers rock, player wins!" << endl;
+                break;
+            case 2:
+                cout << "\nThe game is a tie. Both the player and computer played paper.\n";
+                break;
+            case 3:
+                cout << "\nScissors cut paper, computer wins!\n";
+                break;
+        }
+    }
+    // Else If the user chooses Scissors, based on what the computer has chosen, makes correct display.
+    else if (user == 3)
+    {
+        switch (comp)
+        {
+            case 1:
+                cout << "\nRock crushes scissors, computer wins!\n";
+                break;
+            case 2:
+                cout << "\nScissors cut paper, player wins!\n";
+                break;
+            case 3:
+                cout << "\nThe game is a tie. Both the player and computer played scissors.\n";
+                break;
+        }
+    }
+    // If the user has chosen an option not within the menu, raises an error.
+    else
+    {
+       cout <<  "Error, invalid menu choice." << endl;
+    }
+}
+
+// The main function of our program.
+int main()
+{    
+    // Defines the seed variable and the choice variables for the user and the computer.
+    unsigned int seed;
+    int user, comp;
+
+    // Seeds the srand function with zyLabs defined seed.
+    cin >> seed;
+    srand(seed);
+
+    // Displays the game menu.
+    cout << "Play Game of Rock, Paper, Scissors" << endl;
+    cout << "\n\t1 = Rock";
+    cout << "\n\t2 = Paper";
+    cout << "\n\t3 = Scissors" << endl;
+    cout << "\nChoose your play [1, 2, or 3]: ";
+
+    // Takes as input the users choice.
+    cin >> user;
+
+    // Assigns the computers choice pseudorandomly.
+    comp = rand() % 3 + 1;
+
+    // Calls scoreplay, the main game loop.
+    scorePlay(user, comp);
+
+    // Returns 0 per convention.
+    return 0;
+}
+
+
